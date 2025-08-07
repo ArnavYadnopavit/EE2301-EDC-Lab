@@ -1,0 +1,18 @@
+simulator lang=spectre
+
+simulator lang=spice
+* 2N7000 N-Channel MOSFET Model (SOT-23)
+.subckt 2N7000 d g s b
+M1   d g s s   NMOS   L=1u W=1u
+Cgs  g s 60p
+Cgd  d g 85p
+Rd   d b 0.3   tc=0.0075
+Rs   s b 10m
+Ls   s b 0.5n
+.ends
+
+.model NMOS nmos (VTO=2.1 KP=0.35 THETA=0.086 VMAX=2.2E5)
+.model DDS  D(BV=60 M=0.36 CJO=23p VJ=0.8)
+.model DBODY D(IS=1.4E-13 N=1 RS=40m TT=100n)
+
+simulator lang=spectre
